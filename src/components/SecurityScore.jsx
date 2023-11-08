@@ -2,8 +2,12 @@ import '../styles/security-score.css';
 import { BiTrendingDown } from 'react-icons/bi';
 import { BsDot } from 'react-icons/bs';
 
+import ChartComponent from './ChartComponent';
+
 const SecurityScore = () => {
     return (
+        <div className='container-box' >
+        
         <div className='security_score'>
             <div className='score_box'>
                 <h4> Security Score </h4>
@@ -35,7 +39,12 @@ const SecurityScore = () => {
                         <p> Log4Shell (CVE-2021-44228) </p>
                     </div>
                 </div>
+              
             </div>
+        </div>
+        <div className='chart' >
+                   <ChartComponent/>
+                </div>
         </div>
     )
 }

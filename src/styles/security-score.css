@@ -44,3 +44,28 @@
 .scenarios>div>div p {
     margin: 0;
 }
+
+.container-box{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+.chart{
+  width: 100%;
+}
+
+
+@media (1400px <=width <=1650px) {
+    .container-box{
+        grid-template-columns: 3fr 2fr;
+    }
+      
+  
+}
+
+@media (0px <=width <=1400px) {
+    .container-box{
+        grid-template-columns: 1fr;
+    }
+      
+  
+}

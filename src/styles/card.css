@@ -1,0 +1,36 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: var(--bg_secondary);
+    border-radius: 10px;
+}
+
+
+.details_box >h4,details >p {
+    margin: 0;
+}
+
+.details_box>h4 {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+
+.details_box>p {
+    font-size: 12px;
+    opacity: 80%;
+    margin-top: 1px;
+}
+
+.box-3 {
+    background-color: #1ba16e;
+    font-size: 26px;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

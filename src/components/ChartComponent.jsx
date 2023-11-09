@@ -1,50 +1,71 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { CategoryScale } from 'chart.js';
-import Chart from 'chart.js/auto';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+import {faker} from '@faker-js/faker';
 import { Line } from 'react-chartjs-2';
 
-Chart.register(CategoryScale);
+ function ChartComponent() {
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        PointElement,
+        LineElement,
+        Title,
+        Tooltip,
+        Legend
+    );
 
-const ChartComponent = () => {
-    const data = {
-        labels: ['Point 1', 'Point 2', 'Point 3', 'Point 4', 'Point 5'],
-        datasets: [
-          {
-            label: 'Zigzag Line',
-            data: [5, 30,10, 50,60 ],
-            borderColor: '#ff6384',
-            // tension: 0.4, // Adjust the tension value to control the curve shape
-          },
-        ],
-      };
-
-      const data2 = {
-        labels: ['Point 1', 'Point 2', 'Point 3', 'Point 4', 'Point 5'],
-        datasets: [
-          {
-            label: 'Zigzag Line',
-            data: [15, 30,7, 25,60,80 ],
-            borderColor: '#a1ff63',
-            // tension: 0.4, // Adjust the tension value to control the curve shape
-          },
-        ],
-      };
-    
-      const options = {
+    const options = {
         responsive: true,
-        title: {
-          display: true,
-          text: 'Zigzag Line Chart',
+        plugins: {
+            legend: {
+                display: false,
+                outerWidth : '100%'
+            }
         },
-      };
-    
-      return (
-        <div >
-          <Line data={data} options={options} />
-          
-        </div>
-      );
-};
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    max: 100,
+                    stepSize: 50,
+                },
+            }],
+        },
+    };
 
-export default ChartComponent;
+    const labels = ['01 Nov', '11 Nov', '21 Nov', '01 Dec', '11 Dec'];
+
+    const data = {
+        labels,
+        datasets: [
+            {
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+            {
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
+                borderColor: 'rgb(99, 190, 255)',
+                backgroundColor: 'rgba(20, 114, 140, 0.5)',
+            },
+            {
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
+                borderColor: '#fb8022',
+                backgroundColor: '#fb8022',
+            }
+        ],
+    };
+
+    return <Line width={'600%'} options={options} data={data} />;
+}
+
+export default ChartComponent
